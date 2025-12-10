@@ -197,6 +197,18 @@ if st.session_state['medidas_estimadas']:
         estimativa_antebraco = estimativa_biceps * 0.85
 
         st.markdown("---")
+        st.caption("Medidas da IA (Ajuste se necessário):")
+        cc1, cc2, cc3 = st.columns(3)
+        
+        neck = cc1.number_input("Pescoço (cm)", value=float(vals.get('Neck', 35.0)))
+        chest = cc2.number_input("Peito (cm)", value=float(vals.get('Chest', 95.0)))
+        abdomen = cc3.number_input("Abdômen (cm)", value=float(vals.get('Abdomen', 85.0)))
+        
+        cc4, cc5, cc6 = st.columns(3)
+        hip = cc4.number_input("Quadril (cm)", value=float(vals.get('Hip', 95.0)))
+        thigh = cc5.number_input("Coxa (cm)", value=float(vals.get('Thigh', 55.0)))
+        
+        st.markdown("---")
         st.caption("Medidas complementares (Pré-preenchidas por proporção, ajuste se necessário):")
         cc1, cc2, cc3, cc4 = st.columns(4)
         
