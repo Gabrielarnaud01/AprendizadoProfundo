@@ -1,8 +1,8 @@
 # Projeto Bodyfat Vision AI
 	Disciplina: Aprendizado Profundo (Deep Learning)
 	Semestre: 2025.1
-	Professor: [Nome do Professor]
-	Turma: [Sua Turma]
+	Professor: PATRICK CESAR ALVES TERREMATTE
+	Turma: T01
 
 # Integrantes do Grupo
 	GABRIEL ARNAUD PAIVA TORRES (20210093332)
