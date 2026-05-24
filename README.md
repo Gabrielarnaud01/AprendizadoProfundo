@@ -1,59 +1,59 @@
-# Projeto Bodyfat Vision AI
-	Disciplina: Aprendizado Profundo (Deep Learning)
-	Semestre: 2025.1
+# Bodyfat Vision AI Project
+	Course: Deep Learning
+	Semester: 2025.1
 	Professor: PATRICK CESAR ALVES TERREMATTE
-	Turma: T01
+	Class: T01
 
-# Integrantes do Grupo
+# Group Members
 	GABRIEL ARNAUD PAIVA TORRES (20210093332)
 	DAVI VIEIRA DE CARVALHO LIMA (20220077619)
 
-# 🧠 Descrição — Estimativa de Gordura via Visão Computacional
-    Este repositório implementa um sistema de **Deep Learning** para análise de composição corporal, utilizando duas fotos (frontal e lateral) para estimar medidas e percentual de gordura. O projeto integra:
+# 🧠 Description — Body Fat Estimation via Computer Vision
+    This repository implements a **Deep Learning** system for body composition analysis, using two photos (front and side) to estimate measurements and body fat percentage. The project integrates:
 
-    📸 **Visão Computacional** com Backbone ResNet18 para extração de medidas corporais.
-    🧠 **Rede Neural Tabular** para predição final de gordura corporal.
-    📊 **Dashboard Streamlit** para upload de imagens e visualização de resultados.
-    📏 **Engenharia de Features** automática (Cálculo de IMC, WHR, WHtR).
-    🚀 **Pipeline Híbrido** (Imagem + Dados Demográficos).
+    📸 **Computer Vision** with a ResNet18 Backbone for body measurement extraction.
+    🧠 **Tabular Neural Network** for final body fat prediction.
+    📊 **Streamlit Dashboard** for image upload and results visualization.
+    📏 Automatic **Feature Engineering** (BMI, WHR, WHtR calculation).
+    🚀 **Hybrid Pipeline** (Image + Demographic Data).
 
-# 🚀 Como Instalar e Executar o Projeto
+# 🚀 How to Install and Run the Project
 
-    **Pré-requisito:** Python 3.11.9 (Versão recomendada)
+    **Prerequisite:** Python 3.11.9 (Recommended version)
 
-    1) Criar e ativar ambiente virtual (Opcional, mas recomendado)
+    1) Create and activate a virtual environment (Optional, but recommended)
     python -m venv venv
     # Windows:
     .\venv\Scripts\activate
     # Linux/Mac:
     source venv/bin/activate
 
-    2) Instalar dependências
+    2) Install dependencies
     pip install streamlit torch torchvision pandas numpy joblib Pillow scikit-learn
 
-    3) Verificar arquivos de modelo
-    Certifique-se de que os seguintes arquivos estão na pasta raiz ou em 'dados_processados/':
+    3) Verify model files
+    Make sure the following files are in the root folder or inside 'dados_processados/':
     - modelo_medidas_visao.pth
     - modelo_bodyfat_avancado.pth
     - dados_processados/scaler.pkl
     - dados_processados/sex_encoder.pkl
 
-    4) Rodar o Dashboard Streamlit
+    4) Run the Streamlit Dashboard
     streamlit run app.py
     
-    A aplicação abrirá automaticamente em:
+    The application will automatically open at:
     http://localhost:8501
 
-# 🧩 Arquivos e Classes Principais
+# 🧩 Main Files and Classes
 
-### 📸 DualViewBodyModel (Visão Computacional)
-Classe PyTorch responsável por processar as imagens.
-Implementa:
-- Backbone **ResNet18** pré-treinada.
-- Fusão de características de duas visões (Frontal + Lateral).
-- Camada de regressão para estimar 9 medidas corporais (Peito, Cintura, Quadril, etc.).
+### 📸 DualViewBodyModel (Computer Vision)
+PyTorch class responsible for processing the images.
+Implements:
+- Pre-trained **ResNet18** Backbone.
+- Feature fusion from two views (Front + Side).
+- Regression layer to estimate 9 body measurements (Chest, Waist, Hip, etc.).
 
-O método central no `forward` concatena os vetores de características:
+The core method in the `forward` pass concatenates the feature vectors:
 ```python
     combined = torch.cat((f_front, f_side), dim=1)
     return self.regressor(combined)
